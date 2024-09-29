@@ -1,0 +1,14 @@
+# lastTtoA
+# Converts the last T in a string to an A
+input: ''
+blank: ' '  
+start state: q0
+table:
+  q0:
+    [C,G,T,A]: R
+    ' '  : {L: q1}
+  q1:
+    [C,G,A] : L
+    [T]: {write: A, R: qhalt}
+    [' '] : {R: qhalt}
+  qhalt:

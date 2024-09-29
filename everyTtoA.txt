@@ -1,0 +1,11 @@
+# everyTtoA
+# Converts every T in a string to an A
+input: ''
+blank: ' '
+start state: q0
+table:
+  q0:
+    [C,G,A]: R
+    [T]  : {write: A, R: q0}
+    [' '] : {L: qhalt}
+  qhalt:

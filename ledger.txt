@@ -1,0 +1,26 @@
+# ledger
+# checks if account never goes into the negative
+input:  
+blank: ' '
+start state: q0
+table:
+  q0:
+    $: R
+    ' ': {L: accept}
+    +: {write: $, R: q1}
+  q1:
+    [+,$]: R
+    -: {write: $, R: back}
+    ' ': {L: accept}
+  back:
+    ['-',+,$]: L
+    ' ': {R: q0}
+  accept:
+
+
+# Exercises:
+
+# • Suppose a ledger starts from 0 and gains one dollar for each +
+#   and loses one for each -. Reading left to right,
+#   check that the account never goes into the negative.
+#   Examples: accept '+-++' and '++-+--', reject '-++' and '++---+'.
